@@ -22,31 +22,29 @@ export default async function Posts() {
       <TableHeader>
         <TableRow>
           <TableHead className="w-[100px]">Rang</TableHead>
-          <TableHead className="w-[100px]">Name</TableHead>
-          <TableHead>Description</TableHead>
-          <TableHead>Created</TableHead>
-          <TableHead className="text-right">Updated</TableHead>
+          <TableHead className="w-[200px]">Name</TableHead>
+          <TableHead className="w-[100px]">Actions</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        {posts.map((post: any , index) => (
-          
+        {posts.map((post: any, index) => (
           <TableRow key={post.id}>
-             <TableCell>{index+1}</TableCell>
-            <Link href={`/posts/${post.id}`}>
-              <TableCell className="font-medium">{post.title}</TableCell>
-            </Link>
-            <TableCell>{post.content}</TableCell>
-            <TableCell>{post.createdAt.toLocaleDateString()}</TableCell>{" "}
-            <TableCell className="text-right">
-              {post.updatedAt.toLocaleDateString()}
-            </TableCell>{" "}
+            <TableCell>{index + 1}</TableCell>
+            <TableCell className="font-medium">{post.title}</TableCell>
+            <TableCell>
+              <Link
+                href={`/posts/${post.id}`}
+                className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700"
+              >
+                Voir le détail
+              </Link>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>
       <TableFooter>
         <TableRow>
-          <TableCell colSpan={4}>Total</TableCell>
+          <TableCell colSpan={2}>Total</TableCell>
           <TableCell className="text-right">{count} Post(s)</TableCell>
         </TableRow>
       </TableFooter>
