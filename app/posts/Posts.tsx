@@ -1,3 +1,4 @@
+
 import {
   Table,
   TableBody,
@@ -8,6 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import PostsForm from "../../components/Form";
 
 import prisma from "@/lib/db";
 import Link from "next/link";
@@ -17,11 +19,13 @@ export default async function Posts() {
   const count = posts.length;
 
   return (
+    <>
+    <PostsForm/>
     <Table>
       <TableCaption>A list of Posts.</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Rang</TableHead>
+          <TableHead className="w-[100px]">Rank</TableHead>
           <TableHead className="w-[200px]">Name</TableHead>
           <TableHead className="w-[100px]">Actions</TableHead>
         </TableRow>
@@ -36,7 +40,7 @@ export default async function Posts() {
                 href={`/posts/${post.id}`}
                 className="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700"
               >
-                Voir le détail
+                Details
               </Link>
             </TableCell>
           </TableRow>
@@ -49,5 +53,6 @@ export default async function Posts() {
         </TableRow>
       </TableFooter>
     </Table>
+    </>
   );
 }
